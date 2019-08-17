@@ -5,13 +5,13 @@ import React from "react";
 import MomentUtils from "@date-io/moment";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 
-import { HomePage } from "./pages/home/HomePage";
+import { StartPage } from "./pages/home/StartPage";
 
 const App: React.FC = () => {
   return (
     <div>
       <MuiPickersUtilsProvider utils={MomentUtils}>
-        <HomePage />
+        <StartPage />
       </MuiPickersUtilsProvider>
     </div>
   );
