@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Grid, Link, makeStyles, Paper, Typography } from "@material-ui/core";
+import { Grid, makeStyles, Paper, Typography } from "@material-ui/core";
 
 import imgBG from "../../assets/img/bg2.jpg";
 
@@ -26,18 +26,12 @@ const useStyles = makeStyles(theme => ({
   },
   mainFeaturedPostContent: {
     position: "relative",
-    marginTop: theme.spacing(3),
-    padding: theme.spacing(3),
-    [theme.breakpoints.up("md")]: {
-      padding: theme.spacing(6),
-      paddingRight: 0
-    }
+    padding: theme.spacing(23, 0, 0, 4)
   }
 }));
 
 export const HeroUnit = () => {
   const classes = useStyles();
-  console.log(imgBG);
   return (
     <Paper className={classes.mainFeaturedPost}>
       <div className={classes.overlay} />
@@ -57,9 +51,6 @@ export const HeroUnit = () => {
               quickly and efficiently about what&apos;s most interesting in this
               post&apos;s contents.
             </Typography>
-            <Link variant="subtitle1" href="#">
-              Ugrás a táblázathoz...
-            </Link>
           </div>
         </Grid>
       </Grid>

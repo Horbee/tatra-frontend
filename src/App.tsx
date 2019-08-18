@@ -8,15 +8,18 @@ import React from "react";
 import MomentUtils from "@date-io/moment";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 
+import { GlobalStateContext } from "./context/StateContext";
+import { useGlobalState } from "./context/useGlobalState";
 import { StartPage } from "./pages/home/StartPage";
 
 const App: React.FC = () => {
+  const globalState = useGlobalState();
   return (
-    <div>
+    <GlobalStateContext.Provider value={globalState}>
       <MuiPickersUtilsProvider utils={MomentUtils}>
         <StartPage />
       </MuiPickersUtilsProvider>
-    </div>
+    </GlobalStateContext.Provider>
   );
 };
 

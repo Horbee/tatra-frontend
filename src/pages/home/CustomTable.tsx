@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import {
     createStyles, makeStyles, Table, TableBody, TableCell, TableHead, TableRow, Theme
 } from "@material-ui/core";
 
+import { GlobalStateContext } from "../../context/StateContext";
 import { PickerTableCell } from "./PickerTableCell";
+
+const weeks = [0, 1, 2, 3, 4, 5, 6, 7];
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -26,12 +29,9 @@ interface TableRow {
 
 export const CustomTable = () => {
   const classes = useStyles();
-  const rows: TableRow[] = [
-    { personName: "Peti", weekends: [0, 1, 2, 0, 1, 3, 4, 1] },
-    { personName: "Norbi", weekends: [0, 1, 2, 0, 1, 3, 4, 1] },
-    { personName: "Dori", weekends: [0, 1, 2, 0, 1, 3, 4, 1] }
-  ];
-
+  const {
+    state: { data }
+  } = useContext(GlobalStateContext);
   return (
     <div>
       <Table className={classes.table}>
@@ -49,18 +49,37 @@ export const CustomTable = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(row => (
-            <TableRow key={row.personName}>
-              <TableCell component="th" scope="row">
-                {row.personName}
-              </TableCell>
-              {row.weekends.map(weekend => (
-                <TableCell align="right">
-                  <PickerTableCell availability={weekend} />
+          {data.map(row => {
+            return (
+              <TableRow key={row.name}>
+                <TableCell component="th" scope="row">
+                  {row.name}
                 </TableCell>
-              ))}
-            </TableRow>
-          ))}
+                {weeks.map(week => {
+                  const result = row.availabilities.find(
+                    availability => availability.week === week
+                  );
+                  return result ? (
+                    <TableCell align="right" key={row.name + week}>
+                      <PickerTableCell
+                        personName={row.name}
+                        week={week}
+                        availability={result.availability}
+                      />
+                    </TableCell>
+                  ) : (
+                    <TableCell align="right" key={row.name + week}>
+                      <PickerTableCell
+                        personName={row.name}
+                        week={week}
+                        availability={0}
+                      />
+                    </TableCell>
+                  );
+                })}
+              </TableRow>
+            );
+          })}
         </TableBody>
       </Table>
     </div>

@@ -1,8 +1,6 @@
 import React from "react";
 
-import {
-    AppBar, Container, CssBaseline, Grid, makeStyles, Paper, Toolbar, Typography
-} from "@material-ui/core";
+import { Container, CssBaseline, Grid, makeStyles, Paper } from "@material-ui/core";
 
 import { CustomTable } from "./CustomTable";
 import { Footer } from "./Footer";
@@ -10,16 +8,15 @@ import { HeroUnit } from "./HeroUnit";
 import { StaticCalendar } from "./static-calendar/StaticCalendar";
 
 const useStyles = makeStyles(theme => ({
-  icon: {
-    marginRight: theme.spacing(2)
-  },
   calendarPaper: {
     padding: theme.spacing(3, 2),
     margin: theme.spacing(3, 0)
   },
   tableGrid: {
-    paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8)
+    paddingBottom: theme.spacing(3)
+  },
+  calendarItem: {
+    paddingRight: theme.spacing(2)
   }
 }));
 
@@ -29,20 +26,12 @@ export const StartPage = () => {
   return (
     <>
       <CssBaseline />
-      <AppBar position="relative">
-        <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
-            Tatra tura 2019
-          </Typography>
-        </Toolbar>
-      </AppBar>
       <main>
         <HeroUnit />
-
         <Container className={classes.tableGrid} maxWidth="lg">
           <Paper className={classes.calendarPaper}>
             <Grid container justify="center">
-              <Grid item>
+              <Grid item className={classes.calendarItem}>
                 <StaticCalendar showDate={new Date("09-01-2019")} />
               </Grid>
               <Grid item>
