@@ -4,8 +4,8 @@ import {
     createStyles, makeStyles, Table, TableBody, TableCell, TableHead, TableRow, Theme
 } from "@material-ui/core";
 
-import { GlobalStateContext } from "../../context/StateContext";
-import { PickerTableCell } from "./PickerTableCell";
+import { GlobalStateContext } from "../../../context/StateContext";
+import { PickerTableCell } from "../PickerTableCell";
 
 const weeks = [0, 1, 2, 3, 4, 5, 6, 7];
 
@@ -51,26 +51,26 @@ export const CustomTable = () => {
         <TableBody>
           {data.map(row => {
             return (
-              <TableRow key={row.name}>
+              <TableRow key={row.personName}>
                 <TableCell component="th" scope="row">
-                  {row.name}
+                  {row.personName}
                 </TableCell>
                 {weeks.map(week => {
                   const result = row.availabilities.find(
                     availability => availability.week === week
                   );
                   return result ? (
-                    <TableCell align="right" key={row.name + week}>
+                    <TableCell align="right" key={row.personName + week}>
                       <PickerTableCell
-                        personName={row.name}
+                        personName={row.personName}
                         week={week}
-                        availability={result.availability}
+                        availability={result.status}
                       />
                     </TableCell>
                   ) : (
-                    <TableCell align="right" key={row.name + week}>
+                    <TableCell align="right" key={row.personName + week}>
                       <PickerTableCell
-                        personName={row.name}
+                        personName={row.personName}
                         week={week}
                         availability={0}
                       />

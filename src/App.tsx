@@ -10,14 +10,14 @@ import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 
 import { GlobalStateContext } from "./context/StateContext";
 import { useGlobalState } from "./context/useGlobalState";
-import { StartPage } from "./pages/home/StartPage";
+import { HomePage } from "./pages/home/HomePage";
 
 const App: React.FC = () => {
   const globalState = useGlobalState();
   return (
     <GlobalStateContext.Provider value={globalState}>
       <MuiPickersUtilsProvider utils={MomentUtils}>
-        <StartPage />
+        <HomePage />
       </MuiPickersUtilsProvider>
     </GlobalStateContext.Provider>
   );

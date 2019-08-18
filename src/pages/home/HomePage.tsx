@@ -2,10 +2,10 @@ import React from "react";
 
 import { Container, CssBaseline, Grid, makeStyles, Paper } from "@material-ui/core";
 
-import { CustomTable } from "./CustomTable";
+import { CustomTable } from "./custom-table/CustomTable";
+import { StaticCalendar } from "./custom-table/StaticCalendar";
 import { Footer } from "./Footer";
 import { HeroUnit } from "./HeroUnit";
-import { StaticCalendar } from "./static-calendar/StaticCalendar";
 
 const useStyles = makeStyles(theme => ({
   calendarPaper: {
@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export const StartPage = () => {
+export const HomePage = () => {
   const classes = useStyles();
 
   return (

@@ -1,4 +1,6 @@
+import { WeekStatus } from "./WeekStatus";
+
 export interface Availability {
-  week: number;
-  availability: number;
+  personName: string;
+  availabilities: WeekStatus[];
 }

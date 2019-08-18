@@ -48,8 +48,8 @@ export const PickerTableCell = ({
       dispatch({
         type: SET_AVAILABILITY,
         name: {
-          name: personName,
-          availabilities: [{ week: week, availability: selectedIndex }]
+          personName: personName,
+          availabilities: [{ week: week, status: selectedIndex }]
         }
       });
     }
