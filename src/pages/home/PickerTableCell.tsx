@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 
 import { createStyles, Fab, Icon, makeStyles, Theme } from "@material-ui/core";
-import { deepOrange, green, red } from "@material-ui/core/colors";
+import { green, grey, red } from "@material-ui/core/colors";
 
 import { SET_AVAILABILITY } from "../../context/actions";
 import { GlobalStateContext } from "../../context/StateContext";
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     fabMaybe: {
       margin: theme.spacing(1),
-      backgroundColor: deepOrange[600]
+      backgroundColor: grey[500]
     }
   })
 );

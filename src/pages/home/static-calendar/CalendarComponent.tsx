@@ -1,8 +1,8 @@
 import React from "react";
 
 import { Grid, makeStyles } from "@material-ui/core";
-import { green } from "@material-ui/core/colors";
 
+import { ColorPicker } from "./ColorPicker";
 import { StaticCalendar } from "./StaticCalendar";
 
 const useStyles = makeStyles(theme => ({
@@ -16,7 +16,7 @@ const dateTemplate = (date: any) => {
     return (
       <div
         style={{
-          backgroundColor: green[800], //"#1dcbb3",
+          backgroundColor: ColorPicker.getColor([3, 0, 10]), //"#1dcbb3",
           color: "#ffffff",
           fontWeight: "bold",
           borderRadius: "50%",
@@ -36,6 +36,8 @@ const dateTemplate = (date: any) => {
 
 export const CalendarComponent = () => {
   const classes = useStyles();
+
+  console.log(ColorPicker.getColor([2, 1, 3]));
 
   return (
     <Grid container justify="center">
