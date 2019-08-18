@@ -5,32 +5,13 @@ import { Locale } from "./CalendarUtils";
 
 interface StaticCalendarProps {
   showDate: Date;
+  dateTemplate?: any;
 }
 
-const dateTemplate = (date: any) => {
-  if (date.day > 10 && date.day < 15) {
-    return (
-      <div
-        style={{
-          backgroundColor: "#1dcbb3",
-          color: "#ffffff",
-          fontWeight: "bold",
-          borderRadius: "50%",
-          width: "2em",
-          height: "2em",
-          lineHeight: "2em",
-          padding: 0
-        }}
-      >
-        {date.day}
-      </div>
-    );
-  } else {
-    return date.day;
-  }
-};
-
-export const StaticCalendar = ({ showDate }: StaticCalendarProps) => {
+export const StaticCalendar = ({
+  showDate,
+  dateTemplate
+}: StaticCalendarProps) => {
   const [date, changeDate] = useState(showDate);
 
   const dates = [
