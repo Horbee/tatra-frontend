@@ -7,7 +7,7 @@ import {
 import { deepOrange } from "@material-ui/core/colors";
 
 import { CustomDatePicker } from "./CustomDatePicker";
-import { StaticCalendar } from "./StaticCalendar";
+import { StaticCalendar } from "./static-calendar/StaticCalendar";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -113,7 +113,7 @@ export const HomePage = () => {
           </Grid>
         </Grid>
       </div>
-      <StaticCalendar />
+      {/*<StaticCalendar />*/}
     </Container>
   );
 };

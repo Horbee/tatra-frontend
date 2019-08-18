@@ -1,4 +1,7 @@
 import "./App.css";
+import "primereact/resources/primereact.min.css";
+import "primereact/resources/themes/nova-light/theme.css";
+import "primeicons/primeicons.css";
 
 import React from "react";
 
