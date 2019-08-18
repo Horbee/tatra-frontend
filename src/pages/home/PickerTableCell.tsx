@@ -5,7 +5,7 @@ import { deepOrange, green, red } from "@material-ui/core/colors";
 
 import { SET_AVAILABILITY } from "../../context/actions";
 import { GlobalStateContext } from "../../context/StateContext";
-import { PickerMenu } from "./static-calendar/PickerMenu";
+import { PickerMenu } from "./custom-table/PickerMenu";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

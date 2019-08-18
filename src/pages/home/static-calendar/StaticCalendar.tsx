@@ -1,7 +1,7 @@
 import { Calendar } from "primereact/calendar";
 import React, { useState } from "react";
 
-import { Locale } from "../static-calendar/CalendarUtils";
+import { Locale } from "./CalendarUtils";
 
 interface StaticCalendarProps {
   showDate: Date;
