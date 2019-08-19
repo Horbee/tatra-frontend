@@ -44,7 +44,6 @@ export const PickerTableCell = ({
 
   useEffect(() => {
     if (selectedIndex !== availability) {
-      console.log("selectedIndex changed", personName, week, selectedIndex);
       dispatch({
         type: SET_AVAILABILITY,
         name: {

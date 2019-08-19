@@ -11,7 +11,6 @@ export abstract class ColorPicker {
 
   public static getColor(votes: number[]) {
     const index = 3 - votes[0] + votes[2];
-    console.log("index", index);
 
     if (index <= 0) {
       return ColorPicker.colors[0];

@@ -1,30 +1,36 @@
 import { Calendar } from "primereact/calendar";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
+import { GlobalStateContext } from "../../../context/StateContext";
 import { Locale } from "./CalendarUtils";
 import { ColorPicker } from "./ColorPicker";
 
 interface StaticCalendarProps {
   showDate: Date;
+  month: number;
   daysMap: { arrayIndex: number; daysToMap: [number, number] }[];
 }
 
-export const StaticCalendar = ({ showDate }: StaticCalendarProps) => {
+export const StaticCalendar = ({
+  showDate,
+  month,
+  daysMap
+}: StaticCalendarProps) => {
   const [date, changeDate] = useState(showDate);
+  const {
+    state: { votes }
+  } = useContext(GlobalStateContext);
 
   const dateTemplate = (date: any) => {
-    if (date.day > 10 && date.day < 15) {
+    const dayMap = daysMap.find(map => map.daysToMap.some(d => d === date.day));
+
+    if (dayMap && votes.length > 0) {
+      console.log(date.month);
       return (
         <div
+          className="selected-date"
           style={{
-            backgroundColor: ColorPicker.getColor([3, 0, 10]), //"#1dcbb3",
-            color: "#ffffff",
-            fontWeight: "bold",
-            borderRadius: "50%",
-            width: "2em",
-            height: "2em",
-            lineHeight: "2em",
-            padding: 0
+            backgroundColor: ColorPicker.getColor(votes[dayMap.arrayIndex]) //"#1dcbb3",votes[0]
           }}
         >
           {date.day}
@@ -44,6 +50,7 @@ export const StaticCalendar = ({ showDate }: StaticCalendarProps) => {
 
   return (
     <Calendar
+      onSelect={undefined}
       locale={Locale.hu}
       inline={true}
       readOnlyInput={true}

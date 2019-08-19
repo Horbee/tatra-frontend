@@ -30,7 +30,7 @@ interface TableRow {
 export const CustomTable = () => {
   const classes = useStyles();
   const {
-    state: { data }
+    state: { availabilityArray: data }
   } = useContext(GlobalStateContext);
   return (
     <div>
