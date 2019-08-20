@@ -62,6 +62,7 @@ export const CustomTable = () => {
                   return result ? (
                     <TableCell align="right" key={row.personName + week}>
                       <PickerTableCell
+                        id={row.id}
                         personName={row.personName}
                         week={week}
                         availability={result.status}
@@ -70,6 +71,7 @@ export const CustomTable = () => {
                   ) : (
                     <TableCell align="right" key={row.personName + week}>
                       <PickerTableCell
+                        id={row.id}
                         personName={row.personName}
                         week={week}
                         availability={0}

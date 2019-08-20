@@ -3,8 +3,11 @@ import React, { useContext, useEffect } from "react";
 import { createStyles, Fab, Icon, makeStyles, Theme } from "@material-ui/core";
 import { green, grey, red } from "@material-ui/core/colors";
 
-import { SET_AVAILABILITY } from "../../context/actions";
+import { CHANGE_AVAILABILITY } from "../../context/actions";
 import { GlobalStateContext } from "../../context/StateContext";
+import {
+    AvailabilityServiceContext
+} from "../../services/availability-service/AvailabilityServiceContext";
 import { PickerMenu } from "./custom-table/PickerMenu";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -28,11 +31,13 @@ interface PickerTableCellProps {
   availability: number;
   week: number;
   personName: string;
+  id: string;
 }
 
 export const PickerTableCell = ({
   availability,
   personName,
+  id,
   week
 }: PickerTableCellProps) => {
   const classes = useStyles();
@@ -40,16 +45,14 @@ export const PickerTableCell = ({
   const [menuOpen, setMenuOpen] = React.useState(false);
   const [selectedIndex, setSelectedIndex] = React.useState(availability);
 
-  const { dispatch } = useContext(GlobalStateContext);
+  const { updateAvailability } = useContext(AvailabilityServiceContext);
 
   useEffect(() => {
     if (selectedIndex !== availability) {
-      dispatch({
-        type: SET_AVAILABILITY,
-        name: {
-          personName: personName,
-          availabilities: [{ week: week, status: selectedIndex }]
-        }
+      updateAvailability({
+        id,
+        personName,
+        availabilities: [{ week: week, status: selectedIndex }]
       });
     }
   }, [selectedIndex]);

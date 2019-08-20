@@ -1,10 +1,18 @@
 import { Availability } from "../models/Availability";
 
-export const SET_AVAILABILITY = "SET_AVAILABILITY";
+export const CHANGE_AVAILABILITY = "CHANGE_AVAILABILITY";
+export const FETCH_AVAILABILITIES = "FETCH_AVAILABILITIES";
 
 interface ISetAvailabilityAction {
-  type: typeof SET_AVAILABILITY;
+  type: typeof CHANGE_AVAILABILITY;
   name: Availability;
 }
 
-export type GlobalActionTypes = ISetAvailabilityAction;
+interface IFetchAvailabilitiesAction {
+  type: typeof FETCH_AVAILABILITIES;
+  data: Availability[];
+}
+
+export type GlobalActionTypes =
+  | ISetAvailabilityAction
+  | IFetchAvailabilitiesAction;
