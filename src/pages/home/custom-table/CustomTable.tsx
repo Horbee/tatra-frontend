@@ -38,14 +38,14 @@ export const CustomTable = () => {
         <TableHead>
           <TableRow>
             <TableCell>Nevek / Dátumok</TableCell>
-            <TableCell align="right">Szept 1</TableCell>
-            <TableCell align="right">Szept 2</TableCell>
-            <TableCell align="right">Szept 3</TableCell>
-            <TableCell align="right">Szept 4</TableCell>
-            <TableCell align="right">Okt 1</TableCell>
-            <TableCell align="right">Okt 2</TableCell>
-            <TableCell align="right">Okt 3</TableCell>
-            <TableCell align="right">Okt 4</TableCell>
+            <TableCell align="right">Szept. 7-8 </TableCell>
+            <TableCell align="right">Szept. 14-15</TableCell>
+            <TableCell align="right">Szept. 21-22</TableCell>
+            <TableCell align="right">Szept. 28-29</TableCell>
+            <TableCell align="right">Okt. 5-6</TableCell>
+            <TableCell align="right">Okt. 12-13</TableCell>
+            <TableCell align="right">Okt. 19-20</TableCell>
+            <TableCell align="right">Okt. 26-27</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

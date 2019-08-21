@@ -47,9 +47,10 @@ export const HeroUnit = () => {
               Tátra túra 2019
             </Typography>
             <Typography variant="h5" color="inherit" paragraph>
-              Multiple lines of text that form the lede, informing new readers
-              quickly and efficiently about what&apos;s most interesting in this
-              post&apos;s contents.
+              Az Illegális Kommunista Párt nevében Andi sok szeretettel meghívja
+              az összes párttagot nemes pártunk idei gyűlésére. Ne tartsátok
+              magatokban, ki mikor érne rá. Ehhez a feladathoz mellékelünk egy
+              naptárat és egy táblázatot segítségül.
             </Typography>
           </div>
         </Grid>

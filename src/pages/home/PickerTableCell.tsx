@@ -3,8 +3,6 @@ import React, { useContext, useEffect } from "react";
 import { createStyles, Fab, Icon, makeStyles, Theme } from "@material-ui/core";
 import { green, grey, red } from "@material-ui/core/colors";
 
-import { CHANGE_AVAILABILITY } from "../../context/actions";
-import { GlobalStateContext } from "../../context/StateContext";
 import {
     AvailabilityServiceContext
 } from "../../services/availability-service/AvailabilityServiceContext";

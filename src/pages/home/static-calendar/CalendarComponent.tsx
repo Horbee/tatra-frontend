@@ -6,7 +6,7 @@ import { StaticCalendar } from "./StaticCalendar";
 
 const useStyles = makeStyles(theme => ({
   calendarItem: {
-    paddingRight: theme.spacing(2)
+    padding: theme.spacing(2)
   }
 }));
 
@@ -27,7 +27,7 @@ export const CalendarComponent = () => {
           ]}
         />
       </Grid>
-      <Grid item>
+      <Grid item className={classes.calendarItem}>
         <StaticCalendar
           showDate={new Date("10-02-2019")}
           month={10}
