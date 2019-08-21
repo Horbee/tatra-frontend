@@ -5,7 +5,7 @@ export const FETCH_AVAILABILITIES = "FETCH_AVAILABILITIES";
 
 interface ISetAvailabilityAction {
   type: typeof CHANGE_AVAILABILITY;
-  name: Availability;
+  data: Availability[];
 }
 
 interface IFetchAvailabilitiesAction {

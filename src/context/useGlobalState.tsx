@@ -1,7 +1,11 @@
 import { useReducer } from "react";
 
 import { Availability } from "../models/Availability";
-import { CHANGE_AVAILABILITY, FETCH_AVAILABILITIES, GlobalActionTypes } from "./actions";
+import {
+  CHANGE_AVAILABILITY,
+  FETCH_AVAILABILITIES,
+  GlobalActionTypes
+} from "./actions";
 
 export interface IGlobalState {
   availabilityArray: Availability[];
@@ -52,36 +56,10 @@ export const useGlobalState = () => {
           votes: getVotes(action.data)
         };
       case CHANGE_AVAILABILITY:
-        let foundPerson = prevState.availabilityArray.find(
-          element => element.personName === action.name.personName
-        );
-
-        const index = foundPerson!.availabilities.findIndex(
-          availability =>
-            availability.week === action.name.availabilities![0].week
-        );
-
-        if (index === -1) {
-          foundPerson!.availabilities.push(action.name.availabilities![0]);
-        } else {
-          foundPerson!.availabilities[
-            index
-          ].status = action.name.availabilities![0].status;
-        }
-
-        const newData: Availability[] = prevState.availabilityArray.map(
-          element => {
-            if (element.personName === foundPerson!.personName) {
-              element = { ...foundPerson! };
-            }
-            return element;
-          }
-        );
-
         return {
           ...prevState,
-          availabilityArray: newData,
-          votes: getVotes(newData)
+          availabilityArray: action.data,
+          votes: getVotes(action.data)
         };
     }
   };
