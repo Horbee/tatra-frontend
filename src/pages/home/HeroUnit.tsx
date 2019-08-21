@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
-    height: "400px"
+    height: "auto"
   },
   overlay: {
     position: "absolute",
@@ -27,6 +27,13 @@ const useStyles = makeStyles(theme => ({
   mainFeaturedPostContent: {
     position: "relative",
     padding: theme.spacing(23, 0, 0, 4)
+  },
+  "@global": {
+    html: {
+      [theme.breakpoints.down("md")]: {
+        fontSize: 12
+      }
+    }
   }
 }));
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Avatar, Grid, makeStyles, Typography } from "@material-ui/core";
+import { Avatar, Grid, Hidden, makeStyles, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   orangeAvatar: {
@@ -15,14 +15,16 @@ export const CustomChip = () => {
 
   return (
     <Grid container justify="center" alignItems="center">
-      <Typography
-        variant="caption"
-        display="block"
-        gutterBottom
-        style={{ paddingTop: "5px" }}
-      >
-        Nagyon nem jó
-      </Typography>
+      <Hidden smDown>
+        <Typography
+          variant="caption"
+          display="block"
+          gutterBottom
+          style={{ paddingTop: "5px" }}
+        >
+          Nagyon nem jó
+        </Typography>
+      </Hidden>
       <Avatar
         alt="Color red deep"
         className={classes.orangeAvatar}
@@ -58,14 +60,16 @@ export const CustomChip = () => {
         className={classes.orangeAvatar}
         style={{ backgroundColor: "#1b5e20" }}
       />
-      <Typography
-        variant="caption"
-        display="block"
-        style={{ paddingTop: "5px" }}
-        gutterBottom
-      >
-        Nagyon jó
-      </Typography>
+      <Hidden smDown>
+        <Typography
+          variant="caption"
+          display="block"
+          style={{ paddingTop: "5px" }}
+          gutterBottom
+        >
+          Nagyon jó
+        </Typography>
+      </Hidden>
     </Grid>
   );
 };
