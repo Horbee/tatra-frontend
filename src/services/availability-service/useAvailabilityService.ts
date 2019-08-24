@@ -1,22 +1,13 @@
-import axios, { AxiosResponse } from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import { AxiosResponse } from "axios";
+import { useContext, useEffect, useState } from "react";
 
-import {
-  CHANGE_AVAILABILITY,
-  FETCH_AVAILABILITIES
-} from "../../context/actions";
+import { CHANGE_AVAILABILITY, FETCH_AVAILABILITIES } from "../../context/actions";
 import { GlobalStateContext } from "../../context/StateContext";
 import { Availability } from "../../models/Availability";
-import { WeekStatus } from "../../models/WeekStatus";
 import { AvailabilitiesEndpoint } from "../endpoints/AvailabilitiesEndpoint";
-
-interface Options {
-  rawAvailabilities: Availability[]; // duplicated state, remove it afterwards
-}
 
 export const useAvailabilityService = () => {
   const [loading, setLoading] = useState(true);
-  const [options, setOptions] = useState<Options>({ rawAvailabilities: [] });
   const { state, dispatch } = useContext(GlobalStateContext);
 
   const populateAvailabilites = ({ data }: AxiosResponse<Availability[]>) => {
@@ -25,7 +16,6 @@ export const useAvailabilityService = () => {
       rawArray.push({ id: key, ...data[key as any] });
     }
     dispatch({ type: FETCH_AVAILABILITIES, data: rawArray });
-    //setOptions({ rawAvailabilities: data });
   };
 
   const updateAvailability = (availabilityToUpdate: Availability) => {
@@ -58,7 +48,7 @@ export const useAvailabilityService = () => {
       availabilityToUpdate.id,
       newData.find(e => e.id === availabilityToUpdate.id)!.availabilities
     )
-      .then(response => {
+      .then(() => {
         dispatch({
           type: CHANGE_AVAILABILITY,
           data: newData
@@ -71,7 +61,8 @@ export const useAvailabilityService = () => {
     Promise.all([
       AvailabilitiesEndpoint.getAll().then(populateAvailabilites)
     ]).then(() => setLoading(false));
+    // eslint-disable-next-line
   }, []);
 
-  return { options, loading, updateAvailability };
+  return { loading, updateAvailability };
 };

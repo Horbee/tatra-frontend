@@ -5,19 +5,17 @@ import "primeicons/primeicons.css";
 
 import React from "react";
 
-import { GlobalStateContext } from "./context/StateContext";
-import { useGlobalState } from "./context/useGlobalState";
+import { GlobalStateProvider } from "./context/GlobalStateProvider";
 import { HomePage } from "./pages/home/HomePage";
 import { ServiceProvider } from "./services/ServiceProvider";
 
 const App: React.FC = () => {
-  const globalState = useGlobalState();
   return (
-    <GlobalStateContext.Provider value={globalState}>
+    <GlobalStateProvider>
       <ServiceProvider>
         <HomePage />
       </ServiceProvider>
-    </GlobalStateContext.Provider>
+    </GlobalStateProvider>
   );
 };
 

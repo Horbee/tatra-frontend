@@ -53,6 +53,7 @@ export const PickerTableCell = ({
         availabilities: [{ week: week, status: selectedIndex }]
       });
     }
+    // eslint-disable-next-line
   }, [selectedIndex]);
 
   switch (availability) {
