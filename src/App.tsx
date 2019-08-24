@@ -5,9 +5,6 @@ import "primeicons/primeicons.css";
 
 import React from "react";
 
-import MomentUtils from "@date-io/moment";
-import { MuiPickersUtilsProvider } from "@material-ui/pickers";
-
 import { GlobalStateContext } from "./context/StateContext";
 import { useGlobalState } from "./context/useGlobalState";
 import { HomePage } from "./pages/home/HomePage";
@@ -18,9 +15,7 @@ const App: React.FC = () => {
   return (
     <GlobalStateContext.Provider value={globalState}>
       <ServiceProvider>
-        <MuiPickersUtilsProvider utils={MomentUtils}>
-          <HomePage />
-        </MuiPickersUtilsProvider>
+        <HomePage />
       </ServiceProvider>
     </GlobalStateContext.Provider>
   );
