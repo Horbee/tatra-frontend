@@ -5,7 +5,7 @@ import {
 } from "@material-ui/core";
 
 import { GlobalStateContext } from "../../../context/StateContext";
-import { PickerTableCell } from "../PickerTableCell";
+import { PickerTableCell } from "./PickerTableCell";
 
 const weeks = [0, 1, 2, 3, 4, 5, 6, 7];
 

@@ -5,8 +5,8 @@ import { green, grey, red } from "@material-ui/core/colors";
 
 import {
     AvailabilityServiceContext
-} from "../../services/availability-service/AvailabilityServiceContext";
-import { PickerMenu } from "./availability-table/PickerMenu";
+} from "../../../services/availability-service/AvailabilityServiceContext";
+import { PickerMenu } from "./PickerMenu";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
