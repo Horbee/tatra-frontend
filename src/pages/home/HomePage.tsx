@@ -9,12 +9,16 @@ import { Legend } from "./legend/Legend";
 import { CalendarComponent } from "./static-calendar/CalendarComponent";
 
 const useStyles = makeStyles(theme => ({
+  container: {
+    paddingBottom: theme.spacing(3)
+  },
   calendarPaper: {
     padding: theme.spacing(3, 2),
     margin: theme.spacing(3, 0)
   },
-  tableGrid: {
-    paddingBottom: theme.spacing(3)
+  tablePaper: {
+    width: "100%",
+    overflowX: "auto"
   }
 }));
 
@@ -26,12 +30,12 @@ export const HomePage = () => {
       <CssBaseline />
       <main>
         <HeroUnit />
-        <Container className={classes.tableGrid} maxWidth="lg">
+        <Container className={classes.container} maxWidth="lg">
           <Paper className={classes.calendarPaper}>
             <CalendarComponent />
             <Legend />
           </Paper>
-          <Paper style={{ width: "100%", overflowX: "auto" }}>
+          <Paper className={classes.tablePaper}>
             <CustomTable />
           </Paper>
         </Container>
