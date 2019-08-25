@@ -11,7 +11,7 @@ export abstract class Locale {
       "szombat"
     ],
     dayNamesShort: ["vas", "hét", "ke", "sze", "csü", "pé", "szo"],
-    dayNamesMin: ["V", "H", "K", "S", "C", "P", "S"],
+    dayNamesMin: ["V", "H", "K", "S", "C", "P", "SZ"],
     monthNames: [
       "január",
       "február",

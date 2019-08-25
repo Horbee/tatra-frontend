@@ -18,7 +18,6 @@ export const CalendarComponent = () => {
       <Grid item className={classes.calendarItem}>
         <StaticCalendar
           showDate={new Date("09-01-2019")}
-          month={9}
           daysMap={[
             { arrayIndex: 0, daysToMap: [7, 8] },
             { arrayIndex: 1, daysToMap: [14, 15] },
@@ -29,8 +28,7 @@ export const CalendarComponent = () => {
       </Grid>
       <Grid item className={classes.calendarItem}>
         <StaticCalendar
-          showDate={new Date("10-02-2019")}
-          month={10}
+          showDate={new Date("10-01-2019")}
           daysMap={[
             { arrayIndex: 4, daysToMap: [5, 6] },
             { arrayIndex: 5, daysToMap: [12, 13] },
