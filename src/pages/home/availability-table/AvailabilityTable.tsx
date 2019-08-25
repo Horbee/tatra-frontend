@@ -27,7 +27,7 @@ interface TableRow {
   weekends: Number[];
 }
 
-export const CustomTable = () => {
+export const AvailabilityTable = () => {
   const classes = useStyles();
   const {
     state: { availabilityArray: data }

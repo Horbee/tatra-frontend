@@ -2,7 +2,7 @@ import React from "react";
 
 import { Container, CssBaseline, makeStyles, Paper } from "@material-ui/core";
 
-import { CustomTable } from "./custom-table/CustomTable";
+import { AvailabilityTable } from "./availability-table/AvailabilityTable";
 import { Footer } from "./Footer";
 import { HeroUnit } from "./HeroUnit";
 import { Legend } from "./legend/Legend";
@@ -36,7 +36,7 @@ export const HomePage = () => {
             <Legend />
           </Paper>
           <Paper className={classes.tablePaper}>
-            <CustomTable />
+            <AvailabilityTable />
           </Paper>
         </Container>
       </main>
