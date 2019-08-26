@@ -12,28 +12,28 @@ interface PickerMenuProps {
   setSelectedIndex: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export const PickerMenu = ({
+export const PickerMenu: React.FC<PickerMenuProps> = ({
   anchor,
   open,
   setOpen,
   selectedIndex,
   setSelectedIndex
-}: PickerMenuProps) => {
-  function handleMenuItemClick(
+}) => {
+  const handleMenuItemClick = (
     event: React.MouseEvent<HTMLLIElement, MouseEvent>,
     index: number
-  ) {
+  ) => {
     setSelectedIndex(index);
     setOpen(false);
-  }
+  };
 
-  function handleClose(event: any) {
+  const handleClose = (event: any) => {
     if (anchor.current && anchor.current!.contains(event.target)) {
       return;
     }
 
     setOpen(false);
-  }
+  };
 
   return (
     <Popper open={open} anchorEl={anchor.current} transition>

@@ -1,31 +1,18 @@
 import React, { useContext } from "react";
 
-import {
-    createStyles, makeStyles, Table, TableBody, TableCell, TableHead, TableRow, Theme
-} from "@material-ui/core";
+import { makeStyles, Table, TableBody, TableCell, TableHead, TableRow } from "@material-ui/core";
 
+import { WEEKSTATUS_NOT_KNOWN } from "../../../constants/globals";
 import { GlobalStateContext } from "../../../context/StateContext";
 import { PickerTableCell } from "./PickerTableCell";
 
 const weeks = [0, 1, 2, 3, 4, 5, 6, 7];
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      width: "100%",
-      marginTop: theme.spacing(3),
-      overflowX: "auto"
-    },
-    table: {
-      minWidth: 650
-    }
-  })
-);
-
-interface TableRow {
-  personName: string;
-  weekends: Number[];
-}
+const useStyles = makeStyles(() => ({
+  table: {
+    minWidth: 650
+  }
+}));
 
 export const AvailabilityTable = () => {
   const classes = useStyles();
@@ -56,7 +43,7 @@ export const AvailabilityTable = () => {
               </TableCell>
               {weeks.map(week => {
                 const result = row.availabilities.find(
-                  availability => availability.week === week
+                  weekStatus => weekStatus.week === week
                 );
                 return result ? (
                   <TableCell align="right" key={row.personName + week}>
@@ -64,7 +51,7 @@ export const AvailabilityTable = () => {
                       id={row.id}
                       personName={row.personName}
                       week={week}
-                      availability={result.status}
+                      initialWeekStatus={result.status}
                     />
                   </TableCell>
                 ) : (
@@ -73,7 +60,7 @@ export const AvailabilityTable = () => {
                       id={row.id}
                       personName={row.personName}
                       week={week}
-                      availability={0}
+                      initialWeekStatus={WEEKSTATUS_NOT_KNOWN}
                     />
                   </TableCell>
                 );

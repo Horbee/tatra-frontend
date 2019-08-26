@@ -1,52 +1,51 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 
-import { createStyles, Fab, Icon, makeStyles, Theme } from "@material-ui/core";
+import { Fab, Icon, makeStyles } from "@material-ui/core";
 import { green, grey, red } from "@material-ui/core/colors";
 
+import { WEEKSTATUS_GOOD, WEEKSTATUS_NOT_GOOD } from "../../../constants/globals";
 import {
     AvailabilityServiceContext
 } from "../../../services/availability-service/AvailabilityServiceContext";
 import { PickerMenu } from "./PickerMenu";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    fabCheck: {
-      margin: theme.spacing(1),
-      backgroundColor: green[900]
-    },
-    fabClose: {
-      margin: theme.spacing(1),
-      backgroundColor: red[500]
-    },
-    fabMaybe: {
-      margin: theme.spacing(1),
-      backgroundColor: grey[500]
-    }
-  })
-);
+const useStyles = makeStyles(theme => ({
+  fabCheck: {
+    margin: theme.spacing(1),
+    backgroundColor: green[900]
+  },
+  fabClose: {
+    margin: theme.spacing(1),
+    backgroundColor: red[500]
+  },
+  fabMaybe: {
+    margin: theme.spacing(1),
+    backgroundColor: grey[500]
+  }
+}));
 
 interface PickerTableCellProps {
-  availability: number;
+  initialWeekStatus: number;
   week: number;
   personName: string;
   id: string;
 }
 
-export const PickerTableCell = ({
-  availability,
+export const PickerTableCell: React.FC<PickerTableCellProps> = ({
+  initialWeekStatus,
   personName,
   id,
   week
-}: PickerTableCellProps) => {
+}) => {
   const classes = useStyles();
-  const anchorRef = React.useRef(null as any);
-  const [menuOpen, setMenuOpen] = React.useState(false);
-  const [selectedIndex, setSelectedIndex] = React.useState(availability);
+  const anchorRef = useRef(null as any);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(initialWeekStatus);
 
   const { updateAvailability } = useContext(AvailabilityServiceContext);
 
   useEffect(() => {
-    if (selectedIndex !== availability) {
+    if (selectedIndex !== initialWeekStatus) {
       updateAvailability({
         id,
         personName,
@@ -56,10 +55,10 @@ export const PickerTableCell = ({
     // eslint-disable-next-line
   }, [selectedIndex]);
 
-  switch (availability) {
-    case 1:
-      return (
-        <>
+  const cellIcon = () => {
+    switch (initialWeekStatus) {
+      case WEEKSTATUS_GOOD:
+        return (
           <Fab
             color="secondary"
             aria-label="edit"
@@ -69,18 +68,9 @@ export const PickerTableCell = ({
           >
             <Icon>check</Icon>
           </Fab>
-          <PickerMenu
-            anchor={anchorRef}
-            open={menuOpen}
-            setOpen={setMenuOpen}
-            selectedIndex={selectedIndex}
-            setSelectedIndex={setSelectedIndex}
-          />
-        </>
-      );
-    case 2:
-      return (
-        <>
+        );
+      case WEEKSTATUS_NOT_GOOD:
+        return (
           <Fab
             color="secondary"
             aria-label="edit"
@@ -90,18 +80,9 @@ export const PickerTableCell = ({
           >
             <Icon>close</Icon>
           </Fab>
-          <PickerMenu
-            anchor={anchorRef}
-            open={menuOpen}
-            setOpen={setMenuOpen}
-            selectedIndex={selectedIndex}
-            setSelectedIndex={setSelectedIndex}
-          />
-        </>
-      );
-    default:
-      return (
-        <>
+        );
+      default:
+        return (
           <Fab
             color="secondary"
             aria-label="edit"
@@ -111,14 +92,20 @@ export const PickerTableCell = ({
           >
             <Icon>help</Icon>
           </Fab>
-          <PickerMenu
-            anchor={anchorRef}
-            open={menuOpen}
-            setOpen={setMenuOpen}
-            selectedIndex={selectedIndex}
-            setSelectedIndex={setSelectedIndex}
-          />
-        </>
-      );
-  }
+        );
+    }
+  };
+
+  return (
+    <>
+      {cellIcon()}
+      <PickerMenu
+        anchor={anchorRef}
+        open={menuOpen}
+        setOpen={setMenuOpen}
+        selectedIndex={selectedIndex}
+        setSelectedIndex={setSelectedIndex}
+      />
+    </>
+  );
 };
