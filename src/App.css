@@ -1,0 +1,26 @@
+.p-datepicker-prev,
+.p-datepicker-next,
+.p-datepicker-prev-icon,
+.p-datepicker-next-icon {
+  display: none !important;
+}
+
+.p-datepicker-other-month .selected-date {
+  background-color: white !important;
+  font-weight: 100;
+  color: #333;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  padding: 0;
+}
+
+.selected-date {
+  font-weight: bold;
+  color: #fff;
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  padding: 0;
+}
