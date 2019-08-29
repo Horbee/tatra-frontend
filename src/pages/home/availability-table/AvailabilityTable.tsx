@@ -45,22 +45,15 @@ export const AvailabilityTable = () => {
                 const result = row.availabilities.find(
                   weekStatus => weekStatus.week === week
                 );
-                return result ? (
+                return (
                   <TableCell align="right" key={row.personName + week}>
                     <PickerTableCell
                       id={row.id}
                       personName={row.personName}
                       week={week}
-                      initialWeekStatus={result.status}
-                    />
-                  </TableCell>
-                ) : (
-                  <TableCell align="right" key={row.personName + week}>
-                    <PickerTableCell
-                      id={row.id}
-                      personName={row.personName}
-                      week={week}
-                      initialWeekStatus={WEEKSTATUS_NOT_KNOWN}
+                      initialWeekStatus={
+                        result ? result.status : WEEKSTATUS_NOT_KNOWN
+                      }
                     />
                   </TableCell>
                 );

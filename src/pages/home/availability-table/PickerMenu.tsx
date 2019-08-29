@@ -1,8 +1,17 @@
 import React from "react";
 
-import { ClickAwayListener, Grow, MenuItem, MenuList, Paper, Popper } from "@material-ui/core";
+import {
+    ClickAwayListener, Grow, Icon, makeStyles, MenuItem, MenuList, Paper, Popper
+} from "@material-ui/core";
 
 const options = ["Talán", "Jó", "Nem jó"];
+const icons = ["help", "check", "close"];
+
+const useStyles = makeStyles(theme => ({
+  icon: {
+    marginRight: theme.spacing(1)
+  }
+}));
 
 interface PickerMenuProps {
   anchor: React.MutableRefObject<any>;
@@ -26,6 +35,8 @@ export const PickerMenu: React.FC<PickerMenuProps> = ({
     setSelectedIndex(index);
     setOpen(false);
   };
+
+  const classes = useStyles();
 
   const handleClose = (event: any) => {
     if (anchor.current && anchor.current!.contains(event.target)) {
@@ -54,6 +65,7 @@ export const PickerMenu: React.FC<PickerMenuProps> = ({
                     selected={index === selectedIndex}
                     onClick={event => handleMenuItemClick(event, index)}
                   >
+                    <Icon className={classes.icon}>{icons[index]}</Icon>
                     {option}
                   </MenuItem>
                 ))}
